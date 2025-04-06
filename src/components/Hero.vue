@@ -12,7 +12,7 @@
         >
           <div class="light-effect"  ></div>
           <img
-            src="../assets/images/bio.gif"
+            src="../assets/images/fonde.jpg"
             width="500"
             height="680"
             alt="Diego Rosso"
@@ -25,7 +25,7 @@
         <h1 class="h1 title">Desarrollador Web Frontend</h1>
 
         <div class="wrapper">
-          <a href="#" class="btn btn:hover">
+          <a href="/diegoCv.pdf" download  class="btn btn:hover">
             <span class="span">Descargar CV</span>
 
             <ion-icon

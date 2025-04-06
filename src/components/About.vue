@@ -2,131 +2,164 @@
   <section class="section about" aria-label="about-me" id="about">
     <div class="container">
       <div class="tab-container">
-        <!-- Botones -->
         <ul class="tab-btn-list">
-          <li class="tab-btn-item" v-for="tab in ['about', 'skillset', 'interview', 'awward', 'exhibition']" :key="tab">
-            <button 
-              class="tab-btn title h6" 
-              :class="{ active: activeTab === tab }" 
-              @click="changeTab(tab)">
-              {{ tab.charAt(0).toUpperCase() + tab.slice(1) }}
+          <li class="tab-btn-item">
+            <button class="tab-btn title h6 active" data-tab-btn="about">
+              Sobre mí
+            </button>
+          </li>
+
+          <li class="tab-btn-item">
+            <button class="tab-btn title h6" data-tab-btn="skillset">
+              Tecnologías
+            </button>
+          </li>
+
+          <li class="tab-btn-item">
+            <button class="tab-btn title h6" data-tab-btn="interview">
+              Experiencia
+            </button>
+          </li>
+
+          <li class="tab-btn-item">
+            <button class="tab-btn title h6" data-tab-btn="awward">
+              Diseños
             </button>
           </li>
         </ul>
 
-        <!-- Contenido -->
-        <div v-show="activeTab === 'about'" class="tab-content">
+        <div class="tab-content active" data-tab-content="about">
           <div class="grid-list">
-            <figure class="about-banner img-holder img-border-radius">
-              <img src="../assets/images/pic.gif" width="570" height="420" loading="lazy" alt="about banner" class="img-cover" />
+            <figure
+              class="about-banner img-holder"
+              style="--width: ; --height: "
+              data-tilt
+            >
+              <img
+                src="../assets/images/gif1.gif"
+                width="570"
+                height="420"
+                loading="lazy"
+                alt="about banner"
+                class="img-cover"
+              />
             </figure>
+
             <div class="about-content">
-              <h2 class="h4 title section-title">A very small stage in a vast cosmic.</h2>
+              <h2 class="h4 title section-title">
+                Creatividad en Código y Diseño
+              </h2>
+
               <p class="section-text">
-                A very small stage in a vast cosmic arena great turbuslent clouds encyclo-paedia galactica...
+                Explorando la intersección entre el desarrollo web y el diseño
+                multimedia para crear proyectos innovadores y funcionales.
               </p>
+
+              <ul class="about-list">
+                <li class="about-item">
+                  <p class="list-title">Name</p>
+
+                  <span class="span title h5">Diego Rosso</span>
+                </li>
+
+                <li class="about-item">
+                  <p class="list-title">Teléfono</p>
+
+                  <span class="span title h5">11 3145 3388</span>
+                </li>
+
+                <li class="about-item">
+                  <p class="list-title">Email</p>
+
+                  <span class="span title h5">diegorosso1988@gmail.com</span>
+                </li>
+
+                <li class="about-item">
+                  <p class="list-title">Social Network</p>
+
+                  <div class="social-list">
+                    <a href="#" class="social-link h6" title="Behance">Beh.</a>
+                    <a href="#" class="social-link h6" title="Linkedin">Ln.</a>
+                    <a href="#" class="social-link h6" title="Dribbble">Git.</a>
+                  </div>
+                </li>
+              </ul>
             </div>
           </div>
         </div>
 
-        <div v-show="activeTab === 'skillset'" class="tab-content">
-          <div class="grid-list">
-            <div class="skill-content">
-              <h3 class="h4 title section-title">We help to create visual strategies.</h3>
-              <p class="section-text">
-                A very small stage in a vast cosmic arena great turbuslent clouds encyclo-paedia galactica...
-              </p>
-            </div>
-          </div>
+        <div class="tab-content" data-tab-content="skillset">
+          <Skills />
         </div>
 
-        <div v-show="activeTab === 'interview'" class="tab-content">
-          <div class="grid-list">
-            <div class="interview-card img-holder">
-              <img src="./assets/images/interview-1.jpg" width="376" height="420" loading="lazy" alt="interview 1" class="img-cover" />
-              <button class="btn btn:hover">Play</button>
-            </div>
-          </div>
+        <div class="tab-content" data-tab-content="interview">
+          <Experience />
         </div>
 
-        <div v-show="activeTab === 'awward'" class="tab-content">
-          <h3 class="h4 title section-title">
-            We’re a team of creatives who are excited about unique ideas...
-          </h3>
+        <div class="tab-content" data-tab-content="awward">
+          <flyers />
+          
         </div>
 
-        <div v-show="activeTab === 'exhibition'" class="tab-content">
-          <ul class="grid-list">
-            <li>
-              <div class="exhibition-card">
-                <figure class="card-banner img-holder">
-                  <img src="./assets/images/exhibition-1.jpg" width="376" height="200" loading="lazy" alt="image" class="img-cover" />
-                </figure>
-              </div>
-            </li>
-          </ul>
-        </div>
+        
       </div>
     </div>
   </section>
 </template>
 
-<script>
-export default {
-  name: "About",
-  data() {
-    return {
-      activeTab: "about",
-      tabs: [
-        { name: "about", label: "About Me", component: "AboutContent" },
-        { name: "skillset", label: "Skillset", component: "SkillsetContent" },
-        {
-          name: "interview",
-          label: "Interview",
-          component: "InterviewContent",
-        },
-        { name: "awward", label: "Awwards", component: "AwwardContent" },
-        {
-          name: "exhibition",
-          label: "Exhibition",
-          component: "ExhibitionContent",
-        },
-      ],
-    };
-  },
+<script setup>
+import Skills from "./Skills.vue";
+import Experience from "./Experience.vue";
+import flyers from "./flyers.vue";
 
-  methods: {
-    setActiveTab(tabName) {
-      this.activeTab = tabName;
-    },
-    /**
-     * Aplica el efecto de inclinación basado en la posición del mouse.
-     */
-    applyTilt(event) {
-      const tiltElement = this.$refs.tiltElement;
+document.addEventListener("DOMContentLoaded", () => {
+  console.log("DOM completamente cargado y parseado.");
 
-      // Obtener el centro del elemento
-      const centerX = tiltElement.offsetWidth / 2;
-      const centerY = tiltElement.offsetHeight / 2;
+  const tabButtons = document.querySelectorAll(".tab-btn");
+  const tabContents = document.querySelectorAll(".tab-content");
 
-      // Calcular el ángulo de inclinación
-      const tiltPosX = ((event.offsetY - centerY) / centerY) * 10;
-      const tiltPosY = ((event.offsetX - centerX) / centerX) * 10;
+  tabButtons.forEach((button) => {
+    button.addEventListener("click", () => {
+      const targetTab = button.getAttribute("data-tab-btn");
+      console.log(`Botón clickeado: ${targetTab}`);
 
-      // Aplicar la transformación
-      tiltElement.style.transform = `perspective(1000px) rotateX(${tiltPosX}deg) rotateY(${
-        tiltPosY * -1
-      }deg)`;
-    },
-  },
-};
+      // Mostrar por consola qué contenido está activo antes del cambio
+      const activeContent = document.querySelector(".tab-content.active");
+      if (activeContent) {
+        console.log(
+          `Contenido activo antes del cambio: ${activeContent.getAttribute(
+            "data-tab-content"
+          )}`
+        );
+      }
+
+      // Remover clase activa de todos los botones y contenidos
+      tabButtons.forEach((btn) => btn.classList.remove("active"));
+      tabContents.forEach((content) => content.classList.remove("active"));
+
+      // Agregar clase activa al botón clickeado
+      button.classList.add("active");
+
+      // Buscar y activar el contenido correspondiente
+      const targetContent = document.querySelector(
+        `.tab-content[data-tab-content="${targetTab}"]`
+      );
+      if (targetContent) {
+        targetContent.classList.add("active");
+        console.log(
+          `Nuevo contenido activo: ${targetContent.getAttribute(
+            "data-tab-content"
+          )}`
+        );
+      } else {
+        console.error(`No se encontró contenido para la pestaña: ${targetTab}`);
+      }
+    });
+  });
+});
 </script>
 
 <style scoped>
-.img-border-radius {
-  border-radius: 5rem;
-}
-
 .tab-container {
   border: 1px solid var(--border-eerie-black);
 }
@@ -183,6 +216,7 @@ export default {
   display: flex;
   align-items: center;
   gap: 20px;
+  justify-content: center;
 }
 
 .social-link {
@@ -255,23 +289,6 @@ export default {
   color: var(--bg-smoky-black);
   display: grid;
   place-items: center;
-}
-
-.about-banner {
-  position: relative;
-  display: inline-block;
-}
-
-.inner-image-container {
-  position: absolute;
-  top: -65px; /* Ajusta la posición vertical */
-  left: 20px; /* Ajusta la posición horizontal */
-
-}
-
-.inner-image {
-  width: 100%; /* La imagen se ajusta al contenedor */
-  height: auto;
 }
 
 @media (min-width: 575px) {

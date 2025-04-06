@@ -15,7 +15,7 @@
 
   /* gradient colors */
   --gradient-1: linear-gradient(to top, var(--bg-black) 0%, transparent 40%);
-  --gradient-2: radial-gradient(circle at 75% 100%, hsla(79, 100%, 70%, 0.3) 0%, transparent 100%);
+  --gradient-2: radial-gradient(circle at 75% 100%, hsla(0, 0%, 70%, 0.3) 0%, transparent 100%);
 
   /* text colors */
   --text-white: hsla(0, 0%, 100%, 1);

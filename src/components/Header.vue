@@ -2,15 +2,29 @@
   <header class="header" :class="{ active: isHeaderActive }">
     <div class="container">
       <a href="#" class="logo">
-        <img src="@/assets/images/Diego.png" width="84" height="26" alt="logo" />
+        <img
+          src="@/assets/images/Diego.png"
+          width="84"
+          height="26"
+          alt="logo"
+        />
       </a>
 
       <nav class="navbar" :class="{ active: isNavActive }">
         <div class="navbar-top">
           <a href="#" class="logo">
-            <img src="@/assets/images/Diego.png" width="84" height="26" alt="logo" />
+            <img
+              src="@/assets/images/Diego.png"
+              width="84"
+              height="26"
+              alt="logo"
+            />
           </a>
-          <button class="nav-close-btn" aria-label="close menu" @click="toggleNav">
+          <button
+            class="nav-close-btn"
+            aria-label="close menu"
+            @click="toggleNav"
+          >
             <ion-icon name="close-outline" aria-hidden="true"></ion-icon>
           </button>
         </div>
@@ -22,17 +36,25 @@
         </ul>
       </nav>
 
-      <a href="#" class="btn btn:hover">
-        <span class="span">Get A Quote</span>
+      <!-- ✅ Botón de descarga funcional -->
+      <a href="/diegoCv.pdf" download class="btn btn:hover">
+        <span class="span">Descargar CV</span>
         <ion-icon name="arrow-forward" aria-hidden="true"></ion-icon>
       </a>
-
-      <button class="nav-open-btn btn:hover" aria-label="open menu" @click="toggleNav">
+      <button
+        class="nav-open-btn btn:hover"
+        aria-label="open menu"
+        @click="toggleNav"
+      >
         <span class="line line-1"></span>
         <span class="line line-2"></span>
       </button>
 
-      <div class="overlay" :class="{ active: isNavActive }" @click="toggleNav"></div>
+      <div
+        class="overlay"
+        :class="{ active: isNavActive }"
+        @click="toggleNav"
+      ></div>
     </div>
   </header>
 </template>
@@ -42,15 +64,14 @@ export default {
   name: "HeaderComponent",
   data() {
     return {
-      isNavActive: false, // Controla si el menú está abierto
-      isHeaderActive: false, // Controla si el encabezado tiene la clase activa
+      isNavActive: false,
+      isHeaderActive: false,
       links: [
         { label: "Home", href: "#home" },
-        { label: "Services", href: "#service" },
-        { label: "About", href: "#about" },
-        { label: "Project", href: "#project" },
-        { label: "Review", href: "#review" },
-        { label: "Contact", href: "#contact" },
+        { label: "Servicios", href: "#service" },
+        { label: "Sobre mí", href: "#about" },
+        { label: "Proyectos", href: "#project" },
+        { label: "Contactos", href: "#contact" },
       ],
     };
   },
@@ -59,22 +80,20 @@ export default {
       this.isNavActive = !this.isNavActive;
     },
     handleScroll() {
-      // Activa la clase si se ha hecho scroll hacia abajo
       this.isHeaderActive = window.scrollY > 0;
     },
   },
   mounted() {
-    // Añade un evento de scroll al montar el componente
     window.addEventListener("scroll", this.handleScroll);
   },
   beforeUnmount() {
-    // Remueve el evento de scroll al desmontar el componente
     window.removeEventListener("scroll", this.handleScroll);
   },
 };
 </script>
 
 <style scoped>
+/* Tu CSS se mantiene igual, no necesita cambios */
 .header .btn {
   display: none;
 }
@@ -135,14 +154,6 @@ export default {
 
 .nav-open-btn:is(:hover, :focus-visible) .line-1 {
   transform: scaleX(0.7);
-}
-
-.nav-open-btn::before {
-  background-color: var(--bg-white);
-}
-
-.nav-open-btn::after {
-  background-color: var(--bg-black);
 }
 
 .navbar {

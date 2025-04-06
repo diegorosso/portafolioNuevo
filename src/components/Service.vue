@@ -38,7 +38,7 @@
             <h3 class="card-title">
               <a href="#">
                 Digital <br />
-                Marketing
+                Artist
               </a>
             </h3>
           </div>
