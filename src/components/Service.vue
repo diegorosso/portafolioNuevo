@@ -2,7 +2,7 @@
   <section class="service text-center" aria-label="my services" id="service">
     <div class="container">
       <ul class="service-list">
-        <li class="service-item">
+        <li class="service-item" data-aos=flip-left data-aos-delay=100>
           <div class="service-card">
             <div class="card-icon">
               <img
@@ -23,7 +23,7 @@
           </div>
         </li>
 
-        <li class="service-item">
+        <li class="service-item" data-aos=flip-left data-aos-delay=100>
           <div class="service-card">
             <div class="card-icon">
               <img
@@ -44,7 +44,7 @@
           </div>
         </li>
 
-        <li class="service-item">
+        <li class="service-item " data-aos=flip-left data-aos-delay=200>
           <div class="service-card">
             <div class="card-icon">
               <img
@@ -65,7 +65,7 @@
           </div>
         </li>
 
-        <li class="service-item">
+        <li class="service-item" data-aos=flip-left data-aos-delay=100>
           <div class="service-card">
             <div class="card-icon">
               <img
