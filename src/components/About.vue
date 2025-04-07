@@ -32,7 +32,7 @@
           <div class="grid-list">
             <figure
               class="about-banner img-holder"
-              style="--width: ; --height: "
+              style="--width: 300px; --height: 400px; border-radius: 5rem;" 
               data-tilt
             >
               <img
@@ -89,8 +89,20 @@
                   <p class="list-title">Social Network</p>
 
                   <div class="social-list">
-                    <a href="https://www.linkedin.com/in/diegorosso1988/" target="_blank" class="social-link h6" title="Linkedin">Ln.</a>
-                    <a href="https://github.com/diegorosso" target="_blank" class="social-link h6" title="Git">Git.</a>
+                    <a
+                      href="https://www.linkedin.com/in/diegorosso1988/"
+                      target="_blank"
+                      class="social-link h6"
+                      title="Linkedin"
+                      >Ln.</a
+                    >
+                    <a
+                      href="https://github.com/diegorosso"
+                      target="_blank"
+                      class="social-link h6"
+                      title="Git"
+                      >Git.</a
+                    >
                   </div>
                 </li>
               </ul>

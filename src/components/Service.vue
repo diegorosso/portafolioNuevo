@@ -17,6 +17,7 @@
                 height="80"
                 loading="lazy"
                 alt="service icon"
+                :class="svgColorClass"
               />
             </div>
             <h3 class="card-title">
@@ -33,44 +34,50 @@
 </template>
 
 <script>
-import develop from '../assets/images/develop.png'
-import icon2 from '../assets/images/art.png'
-import pill from '../assets/images/pill.svg'
-import icon4 from '../assets/images/service-icon-4.svg'
+import develop from "../assets/images/develop.svg";
+import icon2 from "../assets/images/art.svg";
+import pill from "../assets/images/pill.svg";
+import icon4 from "../assets/images/service-icon-4.svg";
+import { globalState } from "../globalState";
 
 export default {
-  name: 'ServiceSection',
+  name: "ServiceSection",
   data() {
     return {
       serviceItems: [
         {
           icon: develop,
-          titleLine1: 'Web',
-          titleLine2: 'Development',
-          delay: 100
+          titleLine1: "Web",
+          titleLine2: "Development",
+          delay: 100,
         },
         {
           icon: icon2,
-          titleLine1: 'Digital',
-          titleLine2: 'Artist',
-          delay: 100
+          titleLine1: "Digital",
+          titleLine2: "Artist",
+          delay: 100,
         },
         {
           icon: pill,
-          titleLine1: 'Graphics',
-          titleLine2: 'Design',
-          delay: 200
+          titleLine1: "Graphics",
+          titleLine2: "Design",
+          delay: 200,
         },
         {
           icon: icon4,
-          titleLine1: 'Mobile',
-          titleLine2: 'Application',
-          delay: 100
-        }
-      ]
-    }
+          titleLine1: "Mobile",
+          titleLine2: "Application",
+          delay: 100,
+        },
+      ],
+    };
+  },
+  computed: {
+    svgColorClass() {
+    return globalState.isDarkMode ? 'svg-light' : 'svg-dark';
   }
-}
+  },
+};
 </script>
 
 <style scoped>
@@ -111,6 +118,15 @@ export default {
 }
 .service-card:is(:hover, :focus-visible) .card-icon {
   opacity: 0;
+}
+
+/* Clase aplicada cuando estamos en modo claro */
+.svg-dark {
+  filter: brightness(0) saturate(100%);
+}
+
+.svg-light {
+  filter: brightness(100%) saturate(0);
 }
 
 @media (min-width: 575px) {

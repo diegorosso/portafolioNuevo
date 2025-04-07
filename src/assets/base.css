@@ -1,5 +1,22 @@
 :root {
 
+  .light-theme {
+    --bg-black: hsla(0, 0%, 100%, 1);
+    --bg-smoky-black: hsla(0, 0%, 96%, 1);
+    --bg-rich-black-fogra-29: hsla(0, 0%, 90%, 1);
+    --bg-eerie-black: hsla(0, 0%, 92%, 1);
+    --bg-jet: hsla(0, 0%, 85%, 1);
+  
+    --text-light-gray: hsla(0, 0%, 20%, 1);
+    --text-white: hsla(0, 0%, 0%, 1);
+  
+    --border-eerie-black: hsla(0, 0%, 80%, 1);
+    --border-smoky-black: hsla(0, 0%, 70%, 1);
+    --border-white: hsla(0, 0%, 0%, 1);
+  
+    --gradient-1: linear-gradient(to top, var(--bg-white) 0%, transparent 40%);
+  }
+
   /**
    * COLORS
    */
@@ -30,6 +47,8 @@
   --border-gainsboro: hsla(220, 13%, 91%, 1);
   --border-eerie-black: hsla(0, 0%, 13%, 1);
   --border-smoky-black: hsla(0, 0%, 6%, 1);
+
+  
 
   /**
    * TYPOGRAPHY

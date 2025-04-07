@@ -68,8 +68,13 @@
             </div>
 
             <div>
-              <a class="title h6" href="tel:+541531453388" >15 3145 3388</a>
-
+              <a
+                class="title h6"
+                href="https://wa.me/541131453388"
+                target="_blank"
+                rel="noopener noreferrer"
+                >15 3145 3388</a
+              >
             </div>
           </li>
 
@@ -103,7 +108,9 @@
             </div>
 
             <div>
-              <a class="title h6" href="mailto:diegorosso1988@gmail.com">diegorosso1988@gmail.com</a>
+              <a class="title h6" href="mailto:diegorosso1988@gmail.com"
+                >diegorosso1988@gmail.com</a
+              >
             </div>
           </li>
         </ul>

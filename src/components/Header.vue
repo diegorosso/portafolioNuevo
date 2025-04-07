@@ -35,12 +35,14 @@
           </li>
         </ul>
       </nav>
-
       <!-- ✅ Botón de descarga funcional -->
-      <a href="/diegoCv.pdf" download class="btn btn:hover">
-        <span class="span">Descargar CV</span>
-        <ion-icon name="arrow-forward" aria-hidden="true"></ion-icon>
-      </a>
+      <div class="header-actions" >
+        <Mode />
+        <a href="/diegoCv.pdf" download class="btn btn:hover">
+          <span class="span">Descargar CV</span>
+          <ion-icon name="arrow-forward" aria-hidden="true"></ion-icon>
+        </a>
+      </div>
       <button
         class="nav-open-btn btn:hover"
         aria-label="open menu"
@@ -60,8 +62,12 @@
 </template>
 
 <script>
+import Mode from "../components/Mode.vue";
 export default {
   name: "HeaderComponent",
+  components: {
+    Mode,
+  },
   data() {
     return {
       isNavActive: false,
@@ -224,6 +230,18 @@ export default {
 .overlay.active {
   opacity: 0.5;
   pointer-events: all;
+}
+
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.header-actions .btn {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
 }
 
 @media (min-width: 992px) {

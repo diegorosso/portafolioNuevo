@@ -10,8 +10,14 @@
         alt="Obra destacada"
         class="gallery-item"
       />
-      <button class="nav-btn prev" @click="prevImage">❮</button>
-      <button class="nav-btn next" @click="nextImage">❯</button>
+
+      <button class="nav-btn prev" @click="prevImage">
+        <img :src="back" alt="Back" class="arrow-icon" />
+      </button>
+
+      <button class="nav-btn next" @click="nextImage">
+        <img :src="forward" alt="Forward" class="arrow-icon" />
+      </button>
 
       <div class="dots">
         <span
@@ -26,13 +32,15 @@
   </section>
 </template>
 
-  
 <script>
 import ima1 from "../assets/images/1.jpg";
 import ima2 from "../assets/images/2.jpg";
 import ima3 from "../assets/images/3.jpg";
 import ima4 from "../assets/images/4.jpg";
 import ima5 from "../assets/images/5.jpg";
+import back from "../assets/images/back.svg";
+import forward from "../assets/images/forward.svg";
+import { globalState } from '../globalState'
 
 export default {
   data() {
@@ -40,6 +48,8 @@ export default {
       images: [ima1, ima2, ima3, ima4, ima5],
       currentIndex: 0,
       interval: null,
+      back,
+      forward,
     };
   },
   methods: {
@@ -68,7 +78,7 @@ export default {
   },
 };
 </script>
-  
+
 <style scoped>
 .portfolio {
   text-align: center;
@@ -108,13 +118,14 @@ export default {
   top: 50%;
   transform: translateY(-50%);
   background: rgba(0, 0, 0, 0.6);
-  color: white;
   border: none;
-  font-size: 2rem;
   padding: 10px;
   cursor: pointer;
   border-radius: 50%;
   transition: background 0.3s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .nav-btn:hover {
@@ -127,6 +138,12 @@ export default {
 
 .next {
   right: 10px;
+}
+
+.arrow-icon {
+  width: 24px;
+  height: 24px;
+  filter: invert(1); /* Opcional, útil si la imagen es negra y el fondo es oscuro */
 }
 
 .dots {
@@ -149,4 +166,3 @@ export default {
   background-color: #333;
 }
 </style>
-  
