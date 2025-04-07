@@ -5,7 +5,11 @@
 
       <a href="#top" class="back-top-btn">
         <span class="span">Back To Top</span>
-        <span class="arrow">&#8593;</span>
+        <img
+          src="../assets/images/flecha.png"
+          alt="Volver arriba"
+          class="arrow-img"
+        />
         <!-- Flecha hacia arriba -->
       </a>
     </div>
@@ -37,5 +41,26 @@
   color: var(--text-white);
   padding: 32px 32px;
   border-inline: 1px solid var(--border-eerie-black);
+}
+
+.arrow-img {
+  width: 24px;
+  height: 24px;
+  object-fit: contain;
+}
+
+.back-top-btn:hover .arrow-img {
+  animation: bounce 1.5s infinite ease-in-out;
+}
+
+@keyframes bounce {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-8px);
+  }
 }
 </style>

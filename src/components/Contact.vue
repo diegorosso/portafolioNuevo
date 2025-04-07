@@ -68,7 +68,7 @@
             </div>
 
             <div>
-              <span class="title h6">15 3145 3388</span>
+              <a class="title h6" href="tel:+541531453388" >15 3145 3388</a>
 
             </div>
           </li>
@@ -103,7 +103,7 @@
             </div>
 
             <div>
-              <span class="title h6">diegorosso1988@gmail.com</span>
+              <a class="title h6" href="mailto:diegorosso1988@gmail.com">diegorosso1988@gmail.com</a>
             </div>
           </li>
         </ul>
@@ -170,6 +170,15 @@ textarea.input-field {
 
 .contact-item .title {
   color: var(--text-light-gray);
+}
+
+.contact-item a {
+  color: var(--text-light-gray);
+  text-decoration: none;
+}
+
+.contact-item a:hover {
+  text-decoration: underline;
 }
 
 @media (min-width: 992px) {

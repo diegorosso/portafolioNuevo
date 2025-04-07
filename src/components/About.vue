@@ -65,22 +65,32 @@
                 <li class="about-item">
                   <p class="list-title">Teléfono</p>
 
-                  <span class="span title h5">11 3145 3388</span>
+                  <a
+                    class="span title h5"
+                    href="https://wa.me/541131453388"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    >11 3145 3388</a
+                  >
                 </li>
 
                 <li class="about-item">
                   <p class="list-title">Email</p>
 
-                  <span class="span title h5">diegorosso1988@gmail.com</span>
+                  <a
+                    href="mailto:diegorosso1988@gmail.com"
+                    class="span title h5 email-truncate"
+                    title="diegorosso1988@gmail.com"
+                    >diegorosso1988@gmail.com</a
+                  >
                 </li>
 
                 <li class="about-item">
                   <p class="list-title">Social Network</p>
 
                   <div class="social-list">
-                    <a href="#" class="social-link h6" title="Behance">Beh.</a>
-                    <a href="#" class="social-link h6" title="Linkedin">Ln.</a>
-                    <a href="#" class="social-link h6" title="Dribbble">Git.</a>
+                    <a href="https://www.linkedin.com/in/diegorosso1988/" target="_blank" class="social-link h6" title="Linkedin">Ln.</a>
+                    <a href="https://github.com/diegorosso" target="_blank" class="social-link h6" title="Git">Git.</a>
                   </div>
                 </li>
               </ul>
@@ -98,10 +108,7 @@
 
         <div class="tab-content" data-tab-content="awward">
           <flyers />
-          
         </div>
-
-        
       </div>
     </div>
   </section>
@@ -216,7 +223,7 @@ document.addEventListener("DOMContentLoaded", () => {
   display: flex;
   align-items: center;
   gap: 20px;
-  justify-content: center;
+  justify-content: start;
 }
 
 .social-link {
@@ -289,6 +296,16 @@ document.addEventListener("DOMContentLoaded", () => {
   color: var(--bg-smoky-black);
   display: grid;
   place-items: center;
+}
+
+.email-truncate {
+  display: inline-block;
+  max-width: 180px; /* Ajustá según lo que necesites */
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  vertical-align: bottom;
+  cursor: pointer;
 }
 
 @media (min-width: 575px) {
