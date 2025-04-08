@@ -1,7 +1,10 @@
 <template>
   <section class="section cta" aria-label="work with me">
     <div class="container">
-      <h2 class="title h2 section-title text-center">
+      <h2
+        class="title h2 section-title text-center dark-mode"
+        :class="{ 'dark-mode': isDark }"
+      >
         Algunos proyectos con los que he trabajado recientemente...
       </h2>
 
@@ -19,6 +22,15 @@
     </div>
   </section>
 </template>
+
+<script setup>
+import { computed } from "vue";
+import { globalState } from "../globalState"; // ajusta el path si es necesario
+
+const isDark = computed(() => globalState.isDarkMode);
+
+
+</script>
 
 <style>
 .cta {
@@ -39,6 +51,10 @@
 .cta .btn {
   margin-inline: auto;
   margin-block-start: 30px;
+}
+
+.cta .section-title.dark-mode::before {
+  background-color: var(--text-white);
 }
 
 @media (min-width: 768px) {

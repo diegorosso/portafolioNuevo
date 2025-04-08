@@ -40,7 +40,7 @@ import ima4 from "../assets/images/4.jpg";
 import ima5 from "../assets/images/5.jpg";
 import back from "../assets/images/back.svg";
 import forward from "../assets/images/forward.svg";
-import { globalState } from '../globalState'
+
 
 export default {
   data() {

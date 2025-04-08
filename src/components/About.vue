@@ -132,7 +132,6 @@ import Experience from "./Experience.vue";
 import flyers from "./flyers.vue";
 
 document.addEventListener("DOMContentLoaded", () => {
-  console.log("DOM completamente cargado y parseado.");
 
   const tabButtons = document.querySelectorAll(".tab-btn");
   const tabContents = document.querySelectorAll(".tab-content");
@@ -140,16 +139,9 @@ document.addEventListener("DOMContentLoaded", () => {
   tabButtons.forEach((button) => {
     button.addEventListener("click", () => {
       const targetTab = button.getAttribute("data-tab-btn");
-      console.log(`Botón clickeado: ${targetTab}`);
 
-      // Mostrar por consola qué contenido está activo antes del cambio
       const activeContent = document.querySelector(".tab-content.active");
       if (activeContent) {
-        console.log(
-          `Contenido activo antes del cambio: ${activeContent.getAttribute(
-            "data-tab-content"
-          )}`
-        );
       }
 
       // Remover clase activa de todos los botones y contenidos
@@ -165,11 +157,6 @@ document.addEventListener("DOMContentLoaded", () => {
       );
       if (targetContent) {
         targetContent.classList.add("active");
-        console.log(
-          `Nuevo contenido activo: ${targetContent.getAttribute(
-            "data-tab-content"
-          )}`
-        );
       } else {
         console.error(`No se encontró contenido para la pestaña: ${targetTab}`);
       }
