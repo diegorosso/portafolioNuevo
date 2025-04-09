@@ -3,7 +3,15 @@
     <div class="container">
       <a href="#" class="logo">
         <img
+          v-if="globalState.isDarkMode"
           src="@/assets/images/Diego.png"
+          width="84"
+          height="26"
+          alt="logo"
+        />
+        <img
+          v-else
+          src="@/assets/images/Diegoblack.png"
           width="84"
           height="26"
           alt="logo"
@@ -14,7 +22,15 @@
         <div class="navbar-top">
           <a href="#" class="logo">
             <img
+              v-if="globalState.isDarkMode"
               src="@/assets/images/Diego.png"
+              width="84"
+              height="26"
+              alt="logo"
+            />
+            <img
+              v-else
+              src="@/assets/images/Diegoblack.png"
               width="84"
               height="26"
               alt="logo"
@@ -35,14 +51,15 @@
           </li>
         </ul>
       </nav>
-      <!-- ✅ Botón de descarga funcional -->
-      <div class="header-actions" >
+
+      <div class="header-actions">
         <Mode />
         <a href="/diegoCv.pdf" download class="btn btn:hover">
           <span class="span">Descargar CV</span>
           <ion-icon name="arrow-forward" aria-hidden="true"></ion-icon>
         </a>
       </div>
+
       <button
         class="nav-open-btn btn:hover"
         aria-label="open menu"
@@ -63,6 +80,8 @@
 
 <script>
 import Mode from "../components/Mode.vue";
+import { globalState } from "../globalState";
+
 export default {
   name: "HeaderComponent",
   components: {
@@ -72,6 +91,7 @@ export default {
     return {
       isNavActive: false,
       isHeaderActive: false,
+      globalState, // Hacemos que globalState sea accesible desde el template
       links: [
         { label: "Home", href: "#home" },
         { label: "Servicios", href: "#service" },
@@ -97,6 +117,7 @@ export default {
   },
 };
 </script>
+
 
 <style scoped>
 /* Tu CSS se mantiene igual, no necesita cambios */
@@ -242,6 +263,14 @@ export default {
   display: flex;
   align-items: center;
   gap: 0.5rem;
+}
+
+.svg-dark {
+  filter: brightness(0) saturate(100%);
+}
+
+.svg-light {
+  filter: brightness(100%) saturate(0);
 }
 
 @media (min-width: 992px) {

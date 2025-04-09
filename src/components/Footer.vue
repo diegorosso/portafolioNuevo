@@ -9,12 +9,19 @@
           src="../assets/images/flecha.png"
           alt="Volver arriba"
           class="arrow-img"
+          :class="svgColorClass"
         />
         <!-- Flecha hacia arriba -->
       </a>
     </div>
   </footer>
 </template>
+
+<script setup>
+import { globalState } from "../globalState";
+import { computed } from 'vue';
+const svgColorClass = computed(() => globalState.isDarkMode ? 'svg-light' : 'svg-dark');
+</script>
 
 <style>
 .footer {
@@ -53,6 +60,8 @@
   animation: bounce 1.5s infinite ease-in-out;
 }
 
+
+
 @keyframes bounce {
   0%,
   100% {
@@ -63,4 +72,13 @@
     transform: translateY(-8px);
   }
 }
+
+.svg-dark {
+  filter: brightness(0) saturate(100%);
+}
+
+.svg-light {
+  filter: brightness(100%) saturate(0);
+}
+
 </style>

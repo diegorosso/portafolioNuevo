@@ -2,7 +2,7 @@
 
   .light-theme {
     --bg-black: hsla(0, 0%, 100%, 1);
-    --bg-smoky-black: hsla(0, 0%, 96%, 1);
+    --bg-smoky-black: hsla(0, 0%, 85%, 1);
     --bg-rich-black-fogra-29: hsla(0, 0%, 90%, 1);
     --bg-eerie-black: hsla(0, 0%, 92%, 1);
     --bg-jet: hsla(0, 0%, 85%, 1);
@@ -22,7 +22,7 @@
    */
 
   /* background colors */
-  --bg-white: hsla(0, 0%, 100%, 1);
+  --bg-white: hsla(0, 0%, 20%, 1);
   --bg-light-gray: hsla(240, 1%, 83%, 1);
   --bg-jet: hsla(0, 0%, 18%, 1);
   --bg-eerie-black: hsla(0, 0%, 13%, 1);
