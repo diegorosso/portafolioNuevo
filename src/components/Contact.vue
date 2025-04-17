@@ -4,7 +4,11 @@
       <h2 class="title h2 section-title">Contacto</h2>
 
       <div class="contact-content">
-        <form action="./index.html" method="post" class="contact-form">
+        <form
+          ref="formRef"
+          @submit.prevent="sendEmail"
+          class="contact-form"
+        >
           <template v-for="(field, index) in inputFields" :key="index">
             <component
               :is="field.tag"
@@ -19,8 +23,9 @@
           </button>
         </form>
 
+        <!-- MAPA Y CONTACTOS IGUAL QUE ANTES -->
         <iframe
-           src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3282.078080279516!2d-58.51591742423494!3d-34.49965777298403!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95bcb0539b37e3f1%3A0xf25a4f75cb37aa80!2sSan%20Isidro%2C%20Provincia%20de%20Buenos%20Aires!5e0!3m2!1ses!2sar!4v1712076540000!5m2!1ses!2sar"
+          src="https://www.google.com/maps/embed?pb=..."
           width="600"
           height="450"
           style="border: 0"
@@ -58,14 +63,18 @@
 </template>
 
 <script setup>
-import icon from '../assets/images/contact.svg';
-import icon2 from '../assets/images/smartphone.svg';
-import icon3 from '../assets/images/cottage.svg';
-import { computed } from 'vue';
-import { globalState } from "../globalState";
+import { ref, computed } from 'vue'
+import emailjs from '@emailjs/browser'
+import icon from '../assets/images/contact.svg'
+import icon2 from '../assets/images/smartphone.svg'
+import icon3 from '../assets/images/cottage.svg'
+import { globalState } from '../globalState'
 
-const svgColorClass = computed(() => globalState.isDarkMode ? 'svg-light' : 'svg-dark');
+// 👇 Refs y computed
+const formRef = ref(null)
+const svgColorClass = computed(() => globalState.isDarkMode ? 'svg-light' : 'svg-dark')
 
+// 👇 Campos del formulario
 const inputFields = [
   {
     tag: 'input',
@@ -104,8 +113,9 @@ const inputFields = [
       required: true,
     },
   },
-];
+]
 
+// 👇 Info de contacto
 const contactItems = [
   {
     icon: icon2,
@@ -124,8 +134,33 @@ const contactItems = [
     isLink: true,
     href: 'mailto:diegorosso1988@gmail.com',
   },
-];
+]
+
+// 👇 Función para enviar email con EmailJS
+const sendEmail = () => {
+  if (!formRef.value) return
+
+  emailjs
+    .sendForm(
+      'service_bpdnrft',
+      'template_0299iab',
+      formRef.value,
+      'rtp5OCQsr9OC_68R4'
+    )
+    .then(
+      (result) => {
+        console.log('Correo enviado:', result.text)
+        alert('¡Mensaje enviado con éxito!')
+        formRef.value.reset()
+      },
+      (error) => {
+        console.error('Error al enviar:', error.text)
+        alert('Ocurrió un error al enviar el mensaje.')
+      }
+    )
+}
 </script>
+
 
 
 

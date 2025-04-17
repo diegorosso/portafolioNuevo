@@ -9,6 +9,7 @@ import Cta from "./components/Cta.vue";
 import Project from "./components/Project.vue";
 import Contact from "./components/Contact.vue";
 import Footer from "./components/Footer.vue";
+import Practices from './components/Practices.vue';
 
 onMounted(() => {
   const isMobile = /Mobi|Android|iPhone/i.test(navigator.userAgent) || window.innerWidth <= 768;
@@ -68,6 +69,7 @@ onMounted(() => {
   <Cta />
   <Project />
   <Contact />
+  <Practices />
   <Footer />
 </template>
 

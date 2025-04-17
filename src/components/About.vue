@@ -1,38 +1,28 @@
 <template>
   <section class="section about" aria-label="about-me" id="about">
     <div class="container">
-      <div class="tab-container">
+      <div class="tab-container" ref="tabContainer">
         <ul class="tab-btn-list">
-          <li class="tab-btn-item">
-            <button class="tab-btn title h6 active" data-tab-btn="about">
-              Sobre mí
-            </button>
-          </li>
-
-          <li class="tab-btn-item">
-            <button class="tab-btn title h6" data-tab-btn="skillset">
-              Tecnologías
-            </button>
-          </li>
-
-          <li class="tab-btn-item">
-            <button class="tab-btn title h6" data-tab-btn="interview">
-              Experiencia
-            </button>
-          </li>
-
-          <li class="tab-btn-item">
-            <button class="tab-btn title h6" data-tab-btn="awward">
-              Diseños
+          <li class="tab-btn-item" v-for="tab in tabs" :key="tab.name">
+            <button
+              class="tab-btn title h6"
+              :class="{ active: activeTab === tab.name }"
+              @click="setActiveTab(tab.name)"
+            >
+              {{ tab.label }}
             </button>
           </li>
         </ul>
 
-        <div class="tab-content active" data-tab-content="about">
+        <div
+          v-show="activeTab === 'about'"
+          class="tab-content active"
+          data-tab-content="about"
+        >
           <div class="grid-list">
             <figure
               class="about-banner img-holder"
-              style="--width: 300px; --height: 400px; border-radius: 5rem;" 
+              style="--width: 300px; --height: 400px; border-radius: 5rem"
               data-tilt
             >
               <img
@@ -58,13 +48,11 @@
               <ul class="about-list">
                 <li class="about-item">
                   <p class="list-title">Name</p>
-
                   <span class="span title h5">Diego Rosso</span>
                 </li>
 
                 <li class="about-item">
                   <p class="list-title">Teléfono</p>
-
                   <a
                     class="span title h5"
                     href="https://wa.me/541131453388"
@@ -76,7 +64,6 @@
 
                 <li class="about-item">
                   <p class="list-title">Email</p>
-
                   <a
                     href="mailto:diegorosso1988@gmail.com"
                     class="span title h5 email-truncate"
@@ -87,7 +74,6 @@
 
                 <li class="about-item">
                   <p class="list-title">Social Network</p>
-
                   <div class="social-list">
                     <a
                       href="https://www.linkedin.com/in/diegorosso1988/"
@@ -110,16 +96,36 @@
           </div>
         </div>
 
-        <div class="tab-content" data-tab-content="skillset">
+        <div
+          v-show="activeTab === 'skillset'"
+          class="tab-content active"
+          data-tab-content="skillset"
+        >
           <Skills />
         </div>
 
-        <div class="tab-content" data-tab-content="interview">
+        <div
+          v-show="activeTab === 'interview'"
+          class="tab-content active"
+          data-tab-content="interview"
+        >
           <Experience />
         </div>
 
-        <div class="tab-content" data-tab-content="awward">
+        <div
+          v-show="activeTab === 'awward'"
+          class="tab-content active"
+          data-tab-content="awward"
+        >
           <flyers />
+        </div>
+
+        <div
+          v-show="activeTab === 'practices'"
+          class="tab-content active"
+          data-tab-content="practices"
+        >
+          <Practices />
         </div>
       </div>
     </div>
@@ -127,42 +133,25 @@
 </template>
 
 <script setup>
+import { ref, onMounted } from "vue";
 import Skills from "./Skills.vue";
 import Experience from "./Experience.vue";
 import flyers from "./flyers.vue";
+import Practices from "./Practices.vue";
 
-document.addEventListener("DOMContentLoaded", () => {
+const activeTab = ref("about");
 
-  const tabButtons = document.querySelectorAll(".tab-btn");
-  const tabContents = document.querySelectorAll(".tab-content");
+const tabs = [
+  { name: "about", label: "Sobre mí" },
+  { name: "skillset", label: "Tecnologías" },
+  { name: "interview", label: "Experiencia" },
+  { name: "awward", label: "Diseños" },
+  { name: "practices", label: "Prácticas" },
+];
 
-  tabButtons.forEach((button) => {
-    button.addEventListener("click", () => {
-      const targetTab = button.getAttribute("data-tab-btn");
-
-      const activeContent = document.querySelector(".tab-content.active");
-      if (activeContent) {
-      }
-
-      // Remover clase activa de todos los botones y contenidos
-      tabButtons.forEach((btn) => btn.classList.remove("active"));
-      tabContents.forEach((content) => content.classList.remove("active"));
-
-      // Agregar clase activa al botón clickeado
-      button.classList.add("active");
-
-      // Buscar y activar el contenido correspondiente
-      const targetContent = document.querySelector(
-        `.tab-content[data-tab-content="${targetTab}"]`
-      );
-      if (targetContent) {
-        targetContent.classList.add("active");
-      } else {
-        console.error(`No se encontró contenido para la pestaña: ${targetTab}`);
-      }
-    });
-  });
-});
+const setActiveTab = (tabName) => {
+  activeTab.value = tabName;
+};
 </script>
 
 <style scoped>
@@ -360,7 +349,8 @@ document.addEventListener("DOMContentLoaded", () => {
   :is(
       [data-tab-content="interview"],
       [data-tab-content="exhibition"],
-      [data-tab-content="awward"]
+      [data-tab-content="awward"],
+      [data-tab-content="skillset"]
     )
     .grid-list {
     grid-template-columns: repeat(3, 1fr);
